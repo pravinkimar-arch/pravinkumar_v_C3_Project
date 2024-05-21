@@ -77,4 +77,16 @@ public class Restaurant {
         return name;
     }
 
+    public int getTotalOrderValue(ArrayList<Item> items) {
+        int totalOrderValue = 0;
+        try {
+            for (Item item : items) {
+                totalOrderValue += item.getPrice();
+            }
+        } catch (NullPointerException e) {
+            System.out.println("Recevied null item list");
+        }
+        return totalOrderValue;
+    }
+
 }

@@ -85,14 +85,16 @@ class RestaurantTest {
         itemList.add(newItem1);
         itemList.add(newItem2);
         itemList.add(newItem3);
-        restaurant.getTotalOrderValue(itemList);
+        int orderValue = restaurant.getTotalOrderValue(itemList);
+        assertEquals(150, orderValue);
     }
 
     @Test
     public void order_value_zero_when_items_list_is_empty() {
 
         ArrayList<Item> itemList = new ArrayList<Item>();
-        restaurant.getTotalOrderValue(itemList);
+        int orderValue = restaurant.getTotalOrderValue(itemList);
+        assertEquals(0, orderValue);
     }
 
     @Test
@@ -100,7 +102,9 @@ class RestaurantTest {
 
         ArrayList<Item> itemList = new ArrayList<Item>();
         itemList = null;
-        restaurant.getTotalOrderValue(itemList);
+        int orderValue = restaurant.getTotalOrderValue(itemList);
+        assertEquals(0, orderValue);
+
     }
     //<<<<<<<<<<<<<<<<<<<<<<<Order>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 }
