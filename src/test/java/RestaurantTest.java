@@ -6,6 +6,7 @@ import org.mockito.Spy;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.time.LocalTime;
+import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -70,4 +71,36 @@ class RestaurantTest {
                 ()->restaurant.removeFromMenu("French fries"));
     }
     //<<<<<<<<<<<<<<<<<<<<<<<MENU>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+
+    //>>>>>>>>>>>>>>>>>>>>>>>Order<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+    @Test
+    public void order_value_is_calculated_when_non_empty_itemlist_passed() {
+        Item newItem1 = new Item("Dosa", 50);
+        Item newItem2 = new Item("Idly", 50);
+        Item newItem3 = new Item("vada", 50);
+
+        ArrayList<Item> itemList = new ArrayList<Item>();
+        itemList.add(newItem1);
+        itemList.add(newItem2);
+        itemList.add(newItem3);
+        restaurant.getTotalOrderValue(itemList);
+    }
+
+    @Test
+    public void order_value_zero_when_items_list_is_empty() {
+
+        ArrayList<Item> itemList = new ArrayList<Item>();
+        restaurant.getTotalOrderValue(itemList);
+    }
+
+    @Test
+    public void order_value_zero_when_null_is_passes() {
+
+        ArrayList<Item> itemList = new ArrayList<Item>();
+        itemList = null;
+        restaurant.getTotalOrderValue(itemList);
+    }
+    //<<<<<<<<<<<<<<<<<<<<<<<Order>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 }
